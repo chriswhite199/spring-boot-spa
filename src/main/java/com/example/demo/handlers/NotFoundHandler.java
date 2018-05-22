@@ -26,6 +26,7 @@ public class NotFoundHandler {
       File indexFile = ResourceUtils.getFile(defaultFile);
       FileInputStream inputStream = new FileInputStream(indexFile);
       String body = StreamUtils.copyToString(inputStream, Charset.defaultCharset());
+      inputStream.close();
       return ResponseEntity.ok().contentType(MediaType.TEXT_HTML).body(body);
     } catch (IOException e) {
       e.printStackTrace();
